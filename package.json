@@ -1,0 +1,17 @@
+{
+  "name": "biblio",
+  "version": "1.0.0",
+  "description": "Bibliography and Citation Generator",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Anwesh Dahal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^10.1.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.2"
+  }
+}
