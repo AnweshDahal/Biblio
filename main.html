@@ -39,7 +39,7 @@
           <option value="APA">APA</option>
           <option value="MLA">MLA</option>
         </select>
-        <select name="refMaterial" id="refMaterial" class="form-control col-5 mb-2">
+        <select name="refMaterial" id="refMaterial" class="form-control col-5 mb-2" onchange="updateForm(this);">
           <option value="" disabled selected>Source</option>
           <option value="book">Book</option>
           <option value="journal">Journal Article</option>
@@ -59,17 +59,17 @@
           <input type="text" id="corpAuthor" name="corpAuthor" class="form-control"
             placeholder="Enter If Corporate Author" disabled>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgTitle">
           <label for="title">Title</label>
           <input type="text" name="title" placeholder="Enter Title" id="title" class="form-control">
           <small class="form-text text-muted">Example: The Silmarillion</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgJournalName">
           <label for="journalName">Journal Name</label>
           <input type="text" name="journalName" placeholder="Enter Journal Name" id="journalName" class="form-control">
           <small class="form-text text-muted">Example: The Lancet</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgWebPageName">
           <label for="webPageTitle">Name of Web Page</label>
           <input type="text" name="webPageTitle" placeholder="Enter Web Page Name" id="webPageTitle"
             class="form-control">
@@ -80,54 +80,54 @@
           <input type="text" name="year" id="year" class="form-control" placeholder="Enter Year">
           <small class="form-text text-muted">Example: 2020</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgPages">
           <label for="pages">Pages</label>
           <input type="text" name="pages" id="pages" class="form-control" placeholder="Enter Pages">
           <small class="form-text text-muted">Example: 09-10</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgVolume">
           <label for="volume">Volume</label>
           <input type="text" name="volume" id="volume" class="form-control" placeholder="Enter Volume">
           <small class="form-text text-muted">Example: I</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgIssue">
           <label for="issue">Issue</label>
           <input type="text" name="issue" id="issue" class="form-control" placeholder="Enter Issue">
           <small class="form-text text-muted">Example: 12</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgCity">
           <label for="city">City</label>
           <input type="text" name="city" id="city" class="form-control" placeholder="Enter City">
           <small class="form-text text-muted">Example: Biratnagar</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgPublisher">
           <label for="publisher">Publisher</label>
           <input type="text" name="publisher" id="publisher" class="form-control" placeholder="Enter Publisher">
           <small class="form-text text-muted">Example: F Press</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgEdition">
           <label for="edition">Edition</label>
           <input type="text" name="edition" id="edition" class="form-control" placeholder="Enter Edition">
           <small class="form-text text-muted">Example: I</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgYearAccessed">
           <label for="yearAccessed">Year Accessed</label>
           <input type="text" name="yearAccessed" id="yearAccessed" class="form-control"
             placeholder="Enter Year Accessed">
           <small class="form-text text-muted">Example: 2020</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgMonthAccessed">
           <label for="monthAccessed">Month Accessed</label>
           <input type="text" name="monthAccessed" id="monthAccessed" class="form-control"
             placeholder="Enter Month Accessed">
           <small class="form-text text-muted">Example: Aug</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgDayAccessed">
           <label for="dayAccessed">Day Accessed</label>
           <input type="text" name="dayAccessed" id="dayAccessed" class="form-control" placeholder="Enter Day Accessed">
           <small class="form-text text-muted">Example: 03</small>
         </div>
-        <div class="form-group mb-3">
+        <div class="form-group mb-3 op" id="fgURL">
           <label for="url">URL</label>
           <input type="text" name="url" id="url" class="form-control" placeholder="Enter URL">
           <small class="form-text text-muted">Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ</small>
@@ -148,6 +148,10 @@
     </div>
   </div>
   <script>
+    var optionals = document.querySelectorAll(".op");
+    optionals.forEach((elem) => {
+      elem.style.display = "none";
+    })
     function enableCorpAuthor(e) {
       if (e.checked) {
         document.querySelector('#authorName').disabled = true;
