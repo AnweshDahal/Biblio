@@ -42,13 +42,13 @@
         <select name="refMaterial" id="refMaterial" class="form-control col-5 mb-2">
           <option value="" disabled selected>Source</option>
           <option value="book">Book</option>
-          <option value="journal">Journal</option>
+          <option value="journal">Journal Article</option>
           <option value="website">Website</option>
         </select>
         <div class="form-group">
           <label for="authorName">Authors' Name</label>
           <input type="text" id="authorName" name="authorName" class="form-control" placeholder="Enter Authors' Name">
-          <small id="authorHelp" class="form-text text-muted">Example: Doe,John;Kramer,Cosmo;</small>
+          <small class="form-text text-muted">Example: Doe,John;Kramer,Cosmo;</small>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -60,24 +60,30 @@
             placeholder="Enter If Corporate Author" disabled>
         </div>
         <div class="form-group mb-3">
+          <label for="title">Title</label>
+          <input type="text" name="title" placeholder="Enter Title" id="title" class="form-control">
+          <small class="form-text text-muted">Example: The Silmarillion</small>
+        </div>
+
+        <div class="form-group mb-3">
           <label for="year">Year</label>
           <input type="text" name="year" id="year" class="form-control" placeholder="Enter Year">
-          <small id="yearHelp" class="form-text text-muted">Example: 2020</small>
+          <small class="form-text text-muted">Example: 2020</small>
         </div>
         <div class="form-group mb-3">
           <label for="city">City</label>
           <input type="text" name="city" id="city" class="form-control" placeholder="Enter City">
-          <small id="cityHelp" class="form-text text-muted">Example: Biratnagar</small>
+          <small class="form-text text-muted">Example: Biratnagar</small>
         </div>
         <div class="form-group mb-3">
           <label for="publisher">Publisher</label>
           <input type="text" name="publisher" id="publisher" class="form-control" placeholder="Enter Publisher">
-          <small id="publisherHelp" class="form-text text-muted">Example: F Press</small>
+          <small class="form-text text-muted">Example: F Press</small>
         </div>
         <div class="form-group mb-3">
           <label for="edition">Edition</label>
           <input type="text" name="edition" id="edition" class="form-control" placeholder="Enter Edition">
-          <small id="editionHelp" class="form-text text-muted">Example: I</small>
+          <small class="form-text text-muted">Example: I</small>
         </div>
         <div class="btn-group" role="group">
           <button class="btn btn-primary">Save</button>
