@@ -49,7 +49,7 @@
         <div class="form-group">
           <label for="authorName">Authors' Name</label>
           <input type="text" id="authorName" name="authorName" class="form-control" placeholder="Enter Authors' Name">
-          <small class="form-text text-muted">Example: Doe,John;Kramer,Cosmo;</small>
+          <small class="form-text text-muted">Example: Doe,John;Kramer,Cosmo</small>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -134,8 +134,8 @@
           <small class="form-text text-muted">Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ</small>
         </div>
         <div class="btn-group" role="group">
-          <button class="btn btn-primary">Save</button>
-          <button class="btn btn-danger">Generate</button>
+          <button class="btn btn-primary" onclick="save()">Save</button>
+          <button class="btn btn-danger" onclick="generate()">Generate</button>
         </div>
       </div>
     </div>
@@ -148,8 +148,8 @@
       <p id="bib">Example Bibliography</p>
     </div>
   </div>
+  <script src="./generate.js"></script>
   <script>
-
     function cleanForm() {
       var inputs = document.querySelectorAll('input[type="text"');
       inputs.forEach((elem) => {
