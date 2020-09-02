@@ -34,7 +34,7 @@
     <div class="form-group">
       <div class="form">
         <select name="refStyle" id="refStyle" class="form-control col-5 mb-2">
-          <option value="" disabled selected>Reference Style</option>
+          <option value="" disabled selected>Reference Format</option>
           <option value="havard-angela">Havard Angela</option>
           <option value="APA" disabled>APA (N/A)</option>
           <option value="MLA" disabled>MLA (N/A)</option>
@@ -141,7 +141,7 @@
     </div>
     <div>
       <h4 class="font-weight-normal">In Text Citation</h4>
-      <p id="inCite">Example Citetation</p>
+      <p id="inCite" class="font-italic">Example Citetation</p>
     </div>
     <div>
       <h4 class="font-weight-normal">Bibliography Entry</h4>
@@ -188,6 +188,7 @@
         document.querySelector('#fgVolume').style.display = "block";
         document.querySelector('#fgIssue').style.display = "block";
       } else if (source == "website") {
+        cleanForm();
         document.querySelector('#fgWebPageName').style.display = "block";
         document.querySelector('#fgYearAccessed').style.display = "block";
         document.querySelector('#fgMonthAccessed').style.display = "block";
