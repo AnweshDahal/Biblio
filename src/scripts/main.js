@@ -26,30 +26,37 @@ function updateForm(elem) {
   let source = elem.value;
   if (source == "book") {
     cleanForm();
-    document.querySelector('#fgTitle').style.display = "block";
-    document.querySelector('#fgCity').style.display = "block";
-    document.querySelector('#fgPublisher').style.display = "block";
-    document.querySelector('#fgEdition').style.display = "block";
-
   } else if (source == "journal") {
     cleanForm();
-    document.querySelector('#fgTitle').style.display = "block";
-    document.querySelector('#fgJournalName').style.display = "block";
-    document.querySelector('#fgPages').style.display = "block";
-    document.querySelector('#fgVolume').style.display = "block";
-    document.querySelector('#fgIssue').style.display = "block";
   } else if (source == "website") {
     cleanForm();
-    document.querySelector('#fgWebPageName').style.display = "block";
-    document.querySelector('#fgYearAccessed').style.display = "block";
-    document.querySelector('#fgMonthAccessed').style.display = "block";
-    document.querySelector('#fgDayAccessed').style.display = "block";
-    document.querySelector('#fgURL').style.display = "block";
   } else {
     cleanForm();
   }
 }
 
+function setBook() {
+  document.querySelector('#fgTitle').style.display = "block";
+  document.querySelector('#fgCity').style.display = "block";
+  document.querySelector('#fgPublisher').style.display = "block";
+  document.querySelector('#fgEdition').style.display = "block";
+}
+
+function setJournal() {
+  document.querySelector('#fgTitle').style.display = "block";
+  document.querySelector('#fgJournalName').style.display = "block";
+  document.querySelector('#fgPages').style.display = "block";
+  document.querySelector('#fgVolume').style.display = "block";
+  document.querySelector('#fgIssue').style.display = "block";
+}
+
+function setWebsite() {
+  document.querySelector('#fgWebPageName').style.display = "block";
+  document.querySelector('#fgYearAccessed').style.display = "block";
+  document.querySelector('#fgMonthAccessed').style.display = "block";
+  document.querySelector('#fgDayAccessed').style.display = "block";
+  document.querySelector('#fgURL').style.display = "block";
+}
 // generates the citation
 function generate() {
   let refStyle = document.querySelector("#refStyle").value;
