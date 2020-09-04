@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
   <style>
     body {
       background-image: linear-gradient(to bottom, #2c75ff, #3c7fff, #4b88ff, #5992ff, #679bff);
@@ -35,7 +35,7 @@
       <div class="form">
         <select name="refStyle" id="refStyle" class="form-control col-5 mb-2">
           <option value="" disabled selected>Reference Format</option>
-          <option value="havard-angela">Havard Angela</option>
+          <option value="havard-angila">Havard Angila</option>
           <option value="APA" disabled>APA (N/A)</option>
           <option value="MLA" disabled>MLA (N/A)</option>
         </select>
@@ -148,57 +148,8 @@
       <p id="bib">Example Bibliography</p>
     </div>
   </div>
-  <script src="./generate.js"></script>
+  <script src="./scripts/main.js"></script>
   <script>
-    function cleanForm() {
-      var inputs = document.querySelectorAll('input[type="text"');
-      inputs.forEach((elem) => {
-        elem.innerHTML = "";
-      });
-      var optionals = document.querySelectorAll(".op");
-      optionals.forEach((elem) => {
-        elem.style.display = "none";
-      });
-    }
-
-    function enableCorpAuthor(e) {
-      if (e.checked) {
-        document.querySelector('#authorName').disabled = true;
-        document.querySelector('#corpAuthor').disabled = false;
-      } else {
-        document.querySelector('#authorName').disabled = false;
-        document.querySelector('#corpAuthor').disabled = true;
-      }
-    }
-
-    function updateForm(elem) {
-      let source = elem.value;
-      if (source == "book") {
-        cleanForm();
-        document.querySelector('#fgTitle').style.display = "block";
-        document.querySelector('#fgCity').style.display = "block";
-        document.querySelector('#fgPublisher').style.display = "block";
-        document.querySelector('#fgEdition').style.display = "block";
-
-      } else if (source == "journal") {
-        cleanForm();
-        document.querySelector('#fgTitle').style.display = "block";
-        document.querySelector('#fgJournalName').style.display = "block";
-        document.querySelector('#fgPages').style.display = "block";
-        document.querySelector('#fgVolume').style.display = "block";
-        document.querySelector('#fgIssue').style.display = "block";
-      } else if (source == "website") {
-        cleanForm();
-        document.querySelector('#fgWebPageName').style.display = "block";
-        document.querySelector('#fgYearAccessed').style.display = "block";
-        document.querySelector('#fgMonthAccessed').style.display = "block";
-        document.querySelector('#fgDayAccessed').style.display = "block";
-        document.querySelector('#fgURL').style.display = "block";
-      } else {
-        cleanForm();
-      }
-    }
-
     cleanForm();
   </script>
 </body>
