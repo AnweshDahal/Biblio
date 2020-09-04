@@ -35,6 +35,7 @@ function updateForm(elem) {
   }
 }
 
+// Sets up the form for books
 function setBook() {
   document.querySelector('#fgTitle').style.display = "block";
   document.querySelector('#fgCity').style.display = "block";
@@ -42,6 +43,7 @@ function setBook() {
   document.querySelector('#fgEdition').style.display = "block";
 }
 
+// Sets up the form for journals
 function setJournal() {
   document.querySelector('#fgTitle').style.display = "block";
   document.querySelector('#fgJournalName').style.display = "block";
@@ -50,6 +52,7 @@ function setJournal() {
   document.querySelector('#fgIssue').style.display = "block";
 }
 
+// Sets up the form for websites
 function setWebsite() {
   document.querySelector('#fgWebPageName').style.display = "block";
   document.querySelector('#fgYearAccessed').style.display = "block";
@@ -57,6 +60,7 @@ function setWebsite() {
   document.querySelector('#fgDayAccessed').style.display = "block";
   document.querySelector('#fgURL').style.display = "block";
 }
+
 // generates the citation
 function generate() {
   let refStyle = document.querySelector("#refStyle").value;
