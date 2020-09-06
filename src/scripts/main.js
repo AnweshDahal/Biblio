@@ -1,3 +1,8 @@
+// Global Variables
+var authors = [];
+var hasCorporateAuthor = false;
+
+
 // Cleans the form
 function cleanForm() {
   var inputs = document.querySelectorAll('input[type="text"');
@@ -13,11 +18,19 @@ function cleanForm() {
 // Toggles Corporate Author Entry
 function enableCorpAuthor(e) {
   if (e.checked) {
-    document.querySelector('#authorName').disabled = true;
+    document.querySelector('#authorFirstName').disabled = true;
+    document.querySelector('#authorMiddleName').disabled = true;
+    document.querySelector('#authorLastName').disabled = true;
+    document.querySelector('#addAuthor').disabled = true;
     document.querySelector('#corpAuthor').disabled = false;
+    hasCorporateAuthor = true;
   } else {
-    document.querySelector('#authorName').disabled = false;
+    document.querySelector('#authorFirstName').disabled = false;
+    document.querySelector('#authorMiddleName').disabled = false;
+    document.querySelector('#authorLastName').disabled = false;
+    document.querySelector('#addAuthor').disabled = false;
     document.querySelector('#corpAuthor').disabled = true;
+    hasCorporateAuthor = false;
   }
 }
 
@@ -61,6 +74,26 @@ function setWebsite() {
   document.querySelector('#fgURL').style.display = "block";
 }
 
+function addNewAuthor() {
+  let currFirstName, currMiddleName, currLastName = "";
+
+  currFirstName = document.querySelector("#authorFirstName").value;
+  currMiddleName = document.querySelector("#authorMiddleName").value;
+  currLastName = document.querySelector("#authorLastName").value;
+  // let currAuthor = {
+  //   lastName: currLastName,
+  //   firstName: currFirstName,
+  //   middleName: currMiddleName
+  // }
+
+  // authors.push();
+  // let tempAuthor = ""
+  // authors.forEach((author) => {
+  //   tempauthor += `${author[lastName]}, ${author[firstName][0]}.${author[middleName][0]}}.,`;
+  // });
+  // console.log(tempAuthor);
+}
+
 // generates the citation
 function generate() {
   let refStyle = document.querySelector("#refStyle").value;
@@ -76,28 +109,10 @@ function generate() {
     return null;
   }
 
-  let author = "";
   let year = document.querySelector("#year").value;
   let title = document.querySelector("#title").value;
   let webPageTitle = document.querySelector("#webPageTitle").value;
 
-  // Getting Author
-  var arrayAuthor = true;
-  let hasCorporateAuthor = document.querySelector("#corpAuthorCB").checked;
-  if (hasCorporateAuthor) {
-    author = document.querySelector("#corpAuthor").value;
-    // console.log(author);
-    arrayAuthor = false;
-  } else {
-    author = [];
-    let tempAuthors = document.querySelector('#authorName').value;
-    tempAuthors = tempAuthors.split(";");
-    tempAuthors.forEach((item) => {
-      item = item.split(',');
-      author.push(item);
-    });
-    // console.log(author);
-  }
   console.log(year);
   let citeAuthor = "";
   console.log(author.length);
