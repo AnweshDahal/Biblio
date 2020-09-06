@@ -14,7 +14,7 @@ function createWindows() {
   splashScreen.loadFile("./src/splashScreen.html");
 
   let mainWindow = new BrowserWindow({
-    width: 700,
+    width: 800,
     height: 750,
     resizable: false,
     show: false,
