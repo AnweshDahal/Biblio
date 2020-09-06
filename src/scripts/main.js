@@ -101,7 +101,7 @@ function addNewAuthor() {
   document.querySelector("#authorMiddleName").value = "";
   document.querySelector("#authorLastName").value = "";
 
-  let tempAuthor = ""
+  let tempAuthor = "";
   authors.forEach((author) => {
     if (author['middleName'] != "") {
       tempAuthor += `${author['lastName']}, ${author['firstName'][0]}.${author['middleName'][0]}.,`;
