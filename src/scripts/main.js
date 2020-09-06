@@ -39,10 +39,13 @@ function updateForm(elem) {
   let source = elem.value;
   if (source == "book") {
     cleanForm();
+    setBook();
   } else if (source == "journal") {
     cleanForm();
+    setJournal();
   } else if (source == "website") {
     cleanForm();
+    setWebsite();
   } else {
     cleanForm();
   }
