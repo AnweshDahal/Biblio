@@ -83,18 +83,34 @@ function addNewAuthor() {
   currFirstName = document.querySelector("#authorFirstName").value;
   currMiddleName = document.querySelector("#authorMiddleName").value;
   currLastName = document.querySelector("#authorLastName").value;
-  // let currAuthor = {
-  //   lastName: currLastName,
-  //   firstName: currFirstName,
-  //   middleName: currMiddleName
-  // }
 
-  // authors.push();
-  // let tempAuthor = ""
-  // authors.forEach((author) => {
-  //   tempauthor += `${author[lastName]}, ${author[firstName][0]}.${author[middleName][0]}}.,`;
-  // });
+  if (currFirstName == "" && currLastName == "") {
+    alert("Invalid Author Name");
+    return null;
+  }
+
+  let currAuthor = {
+    'lastName': currLastName,
+    'firstName': currFirstName,
+    'middleName': currMiddleName
+  }
+
+  authors.push(currAuthor);
+
+  document.querySelector("#authorFirstName").value = "";
+  document.querySelector("#authorMiddleName").value = "";
+  document.querySelector("#authorLastName").value = "";
+
+  let tempAuthor = ""
+  authors.forEach((author) => {
+    if (author['middleName'] != "") {
+      tempAuthor += `${author['lastName']}, ${author['firstName'][0]}.${author['middleName'][0]}.,`;
+    } else {
+      tempAuthor += `${author['lastName']}, ${author['firstName'][0]}.,`;
+    }
+  });
   // console.log(tempAuthor);
+  document.querySelector("#authors").innerHTML = tempAuthor;
 }
 
 // generates the citation
