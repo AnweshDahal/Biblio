@@ -46,11 +46,18 @@
           <option value="journal">Journal Article</option>
           <option value="website">Website</option>
         </select>
-        <div class="form-group">
-          <label for="authorName">Authors' Name</label>
-          <input type="text" id="authorName" name="authorName" class="form-control" placeholder="Enter Authors' Name">
-          <small class="form-text text-muted">Example: Doe,John;Kramer,Cosmo</small>
+        <div class="input-group mb-3">
+          <input type="text" name="authorFirstName" id="authorFirstName" class="form-control"
+            placeholder="Author First Name">
+          <input type="text" name="authorMiddleName" id="authorMiddleName" class="form-control"
+            placeholder="Author Middle Name">
+          <input type="text" name="authorLastName" id="authorLastName" class="form-control"
+            placeholder="Author Last Name">
+          <div class="input-group-append">
+            <button class="btn btn-primary" id="addAuthor" onclick="addNewAuthor()">Add</button>
+          </div>
         </div>
+
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -59,6 +66,9 @@
           </div>
           <input type="text" id="corpAuthor" name="corpAuthor" class="form-control"
             placeholder="Enter If Corporate Author" disabled>
+        </div>
+        <div class="mb-3">
+          <strong>Author:</strong> <span id="authors"></span>
         </div>
         <div class="form-group mb-3 op" id="fgTitle">
           <label for="title">Title</label>
