@@ -161,9 +161,9 @@ function generateCitetation(year, refMaterial) {
     citeAuthor = document.querySelector("#corpAuthor").value;
   } else {
     if (refMaterial == "book" || refMaterial == "journal") {
-      citeAuthor = document.querySelector("#title");
+      citeAuthor = document.querySelector("#title").value;
     } else if (refMaterial == "webSite") {
-      citeAuthor = document.querySelector("#webPageTitle");
+      citeAuthor = document.querySelector("#webPageTitle").value;
     }
   }
 
