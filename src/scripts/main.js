@@ -1,16 +1,20 @@
-const { ipcRenderer } = require('electron');
+const { ipcRenderer } = require('electron'); // importing ipcRenderer from the 'electron' module
 
 // Global Variables
-var authors = [];
-var hasCorporateAuthor = false;
+var authors = []; // list of authors
+var hasCorporateAuthor = false; // for checking wether the source has a corporate author
 
 
 // Cleans the form
 function cleanForm() {
+  // sets the value of each input element to ""
   var inputs = document.querySelectorAll('input[type="text"');
   inputs.forEach((elem) => {
     elem.innerHTML = "";
   });
+
+  // sets the display of all optional elements to none
+  // hides the optional elements
   var optionals = document.querySelectorAll(".op");
   optionals.forEach((elem) => {
     elem.style.display = "none";
@@ -20,6 +24,7 @@ function cleanForm() {
 // Toggles Corporate Author Entry
 function enableCorpAuthor(e) {
   if (e.checked) {
+    // if corporate author checkbox is checked
     document.querySelector('#authorFirstName').disabled = true;
     document.querySelector('#authorMiddleName').disabled = true;
     document.querySelector('#authorLastName').disabled = true;
@@ -27,6 +32,7 @@ function enableCorpAuthor(e) {
     document.querySelector('#corpAuthor').disabled = false;
     hasCorporateAuthor = true;
   } else {
+    // if corporate author checkox is not checked
     document.querySelector('#authorFirstName').disabled = false;
     document.querySelector('#authorMiddleName').disabled = false;
     document.querySelector('#authorLastName').disabled = false;
@@ -38,7 +44,7 @@ function enableCorpAuthor(e) {
 
 // Updates form according to style and source
 function updateForm(elem) {
-  let source = elem.value;
+  let source = elem.value; // value of source from the dropdown
   if (source == "book") {
     cleanForm();
     setBook();
@@ -79,31 +85,36 @@ function setWebsite() {
   document.querySelector('#fgURL').style.display = "block";
 }
 
+// adds new author to the authors list
 function addNewAuthor() {
-  let currFirstName, currMiddleName, currLastName = "";
+  let currFirstName, currMiddleName, currLastName = ""; // initializing the variable to be included
 
+  // getting the value from the HTML
   currFirstName = document.querySelector("#authorFirstName").value;
   currMiddleName = document.querySelector("#authorMiddleName").value;
   currLastName = document.querySelector("#authorLastName").value;
 
+  // check if the first & last name of the author is provided
   if (currFirstName == "" && currLastName == "") {
     alert("Invalid Author Name");
     return null;
   }
 
+  // an object that stores the author name seperately
   let currAuthor = {
     'lastName': currLastName,
     'firstName': currFirstName,
     'middleName': currMiddleName
   }
 
-  authors.push(currAuthor);
+  authors.push(currAuthor); // adding the author object to the authors list
 
+  // emptying the text input 
   document.querySelector("#authorFirstName").value = "";
   document.querySelector("#authorMiddleName").value = "";
   document.querySelector("#authorLastName").value = "";
 
-  let tempAuthor = "";
+  let tempAuthor = ""; // initialing a variable for concatinated list of authors
   authors.forEach((author) => {
     if (author['middleName'] != "") {
       tempAuthor += `${author['lastName']}, ${author['firstName'][0]}.${author['middleName'][0]}.,`;
@@ -111,15 +122,17 @@ function addNewAuthor() {
       tempAuthor += `${author['lastName']}, ${author['firstName'][0]}.,`;
     }
   });
-  // console.log(tempAuthor);
-  document.querySelector("#authors").innerHTML = tempAuthor;
+
+  document.querySelector("#authors").innerHTML = tempAuthor; // displaying the names of the authors
 }
 
 // generates the citation and bibliography
 function generate() {
-  let refStyle = document.querySelector("#refStyle").value;
-  let refMaterial = document.querySelector("#refMaterial").value;
+  let refStyle = document.querySelector("#refStyle").value; // the reference style
+  let refMaterial = document.querySelector("#refMaterial").value; // the reference material
 
+  // checks if reference style and reference material are empty
+  // alerts the user if so
   if (refStyle == "" && refMaterial != "") {
     alert("Please select a valid referencing format.");
     return null;
@@ -131,37 +144,41 @@ function generate() {
     return null;
   }
 
-  let year = document.querySelector("#year").value;
+  let year = document.querySelector("#year").value; // gets the value of the year from the HTML
 
-  generateCitetation(year, refMaterial);
+  generateCitetation(year, refMaterial); // calling the function to generate citetation
 
+  // generating bibliography
   if (refMaterial == "book") {
+    // if the source is a book
     generateBookBibliography(year)
   } else if (refMaterial == "journal") {
+    // if the source is a journal
     var journalTitle = document.querySelector('#title').value;
     var journalName = document.querySelector('#journalName');
     var pages = document.querySelector("#pages");
   }
 }
 
+// function to generate citetation
 function generateCitetation(year, refMaterial) {
-  let citeAuthor = "";
+  let citeAuthor = ""; // temporary variable for storing author name
 
-  if (!hasCorporateAuthor && (authors.length > 3)) {
+  if (!hasCorporateAuthor && (authors.length > 3)) { // if there are more than 3 authors
     citeAuthor = `${authors[0]['lastName']} et al.`;
-  } else if (!hasCorporateAuthor && (authors.length == 3)) {
+  } else if (!hasCorporateAuthor && (authors.length == 3)) { // if there are three authors
     citeAuthor = `${authors[0]['lastName']}, ${authors[1]['lastName']} and ${authors[2]['lastName']}`;
-  } else if (!hasCorporateAuthor && (authors.length == 2)) {
+  } else if (!hasCorporateAuthor && (authors.length == 2)) { // if there are two authors
     citeAuthor = `${authors[0]['lastName']} & ${authors[1]['lastName']}`;
-  } else if (!hasCorporateAuthor && authors.length == 1) {
+  } else if (!hasCorporateAuthor && authors.length == 1) { // if there is one author
     if (authors[0]['lastName'] == null || authors[0]['lastName'] == "") {
       citeAuthor = authors[0]['firstName'];
     } else {
       citeAuthor = authors[0]['lastName'];
     }
-  } else if (hasCorporateAuthor) {
+  } else if (hasCorporateAuthor) { // if thee is a corporate author
     citeAuthor = document.querySelector("#corpAuthor").value;
-  } else {
+  } else { // if there is no author
     if (refMaterial == "book" || refMaterial == "journal") {
       citeAuthor = document.querySelector("#title").value;
     } else if (refMaterial == "webSite") {
@@ -169,14 +186,15 @@ function generateCitetation(year, refMaterial) {
     }
   }
 
-  if (year == "" || year == null) {
+  if (year == "" || year == null) { // if the year is not provided
     year = "n.d.";
   }
 
-  var cite = `(${citeAuthor}, ${year})`;
-  document.querySelector("#inCite").innerHTML = cite;
+  var cite = `(${citeAuthor}, ${year})`; // formatted string for citetation
+  document.querySelector("#inCite").innerHTML = cite; // displaying the citetation
 }
 
+// function to generate book bibliography
 function generateBookBibliography(year) {
   let bookTitle = document.querySelector("#title").value;
   let bookCity = document.querySelector("#city").value;
@@ -184,6 +202,7 @@ function generateBookBibliography(year) {
   let bookEdition = document.querySelector("#edition");
 }
 
+// function to reset the form
 function reset() {
   ipcRenderer.send('reset_form');
 }
