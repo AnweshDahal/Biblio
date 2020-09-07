@@ -113,39 +113,52 @@ function addNewAuthor() {
   document.querySelector("#authors").innerHTML = tempAuthor;
 }
 
-// generates the citation
+// generates the citation and bibliography
 function generate() {
   let refStyle = document.querySelector("#refStyle").value;
   let refMaterial = document.querySelector("#refMaterial").value;
 
-  if (refStyle == "") {
+  if (refStyle == "" && refMaterial != "") {
     alert("Please select a valid referencing format.");
     return null;
-  }
-
-  if (refMaterial == "") {
+  } else if (refMaterial == "" && refStyle != "") {
     alert("Please select a valid reference material.");
+    return null;
+  } else if (refStyle == "" && refMaterial == "") {
+    alert("Please select a valid reference material and source.");
     return null;
   }
 
   let year = document.querySelector("#year").value;
-  let title = document.querySelector("#title").value;
-  let webPageTitle = document.querySelector("#webPageTitle").value;
 
-  console.log(year);
+  generateCitetation(year, refMaterial);
+
+  if (refMaterial == "book") {
+    generateBookBibliography(year)
+  } else if (refMaterial == "journal") {
+    var journalTitle = document.querySelector('#title').value;
+    var journalName = document.querySelector('#journalName');
+    var pages = document.querySelector("#pages");
+  }
+}
+
+function generateCitetation(year, refMaterial) {
   let citeAuthor = "";
-  console.log(author.length);
 
-  if (arrayAuthor && (author.length > 3)) {
-    citeAuthor = author[0][0] + " et al";
-  } else if (arrayAuthor && (author.length == 3)) {
-    citeAuthor = `${author[0][0]}, ${author[1][0]} and ${author[2][0]}`;
-  } else if (arrayAuthor && (author.length == 2)) {
-    citeAuthor = author[0][0] + " & " + author[1][0];
-  } else if (arrayAuthor && author.length == 1) {
-    citeAuthor = author[0][0];
-  } else if (!arrayAuthor) {
-    citeAuthor = author;
+  if (!hasCorporateAuthor && (authors.length > 3)) {
+    citeAuthor = `${authors[0]['lastName']} et al.`;
+  } else if (!hasCorporateAuthor && (authors.length == 3)) {
+    citeAuthor = `${authors[0]['lastName']}, ${authors[1]['lastName']} and ${authors[2]['lastName']}`;
+  } else if (!hasCorporateAuthor && (authors.length == 2)) {
+    citeAuthor = `${authors[0]['lastName']} & ${authors[1]['lastName']}`;
+  } else if (!hasCorporateAuthor && authors.length == 1) {
+    if (authors[0]['lastName'] == null || authors[0]['lastName'] == "") {
+      citeAuthor = authors[0]['firstName'];
+    } else {
+      citeAuthor = authors[0]['lastName'];
+    }
+  } else if (hasCorporateAuthor) {
+    citeAuthor = document.querySelector("#corpAuthor").value;
   } else {
     if (refMaterial == "book" || refMaterial == "journal") {
       citeAuthor = document.querySelector("#title");
@@ -160,17 +173,9 @@ function generate() {
 
   var cite = `(${citeAuthor}, ${year})`;
   document.querySelector("#inCite").innerHTML = cite;
-
-  if (refMaterial == "book") {
-    generateBookBibliography(citeAuthor, year)
-  } else if (refMaterial == "journal") {
-    var journalTitle = document.querySelector('#title').value;
-    var journalName = document.querySelector('#journalName');
-    var pages = document.querySelector("#pages");
-  }
 }
 
-function generateBookBibliography(author, year) {
+function generateBookBibliography(year) {
   let bookTitle = document.querySelector("#title").value;
   let bookCity = document.querySelector("#city").value;
   let bookPublisher = document.querySelector("#publisher").value;
