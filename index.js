@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 function createWindows() {
   let splashScreen = new BrowserWindow(
@@ -43,6 +43,10 @@ function createWindows() {
   splashScreen.on('closed', () => {
     splashScreen = null;
   });
+
+  ipcMain.on('reset_form', () => {
+    mainWindow.reload();
+  })
 }
 
 app.on('ready', () => {

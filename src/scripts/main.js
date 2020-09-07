@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('electron');
+
 // Global Variables
 var authors = [];
 var hasCorporateAuthor = false;
@@ -180,4 +182,8 @@ function generateBookBibliography(year) {
   let bookCity = document.querySelector("#city").value;
   let bookPublisher = document.querySelector("#publisher").value;
   let bookEdition = document.querySelector("#edition");
+}
+
+function reset() {
+  ipcRenderer.send('reset_form');
 }
