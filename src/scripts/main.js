@@ -192,14 +192,56 @@ function generateCitetation(year, refMaterial) {
 
   var cite = `(${citeAuthor}, ${year})`; // formatted string for citetation
   document.querySelector("#inCite").innerHTML = cite; // displaying the citetation
+
+  generateBookBibliography(year);
 }
 
 // function to generate book bibliography
 function generateBookBibliography(year) {
+  let bookAuthor = "";
+  if (hasCorporateAuthor) {
+    bookAuthor = document.querySelector("#corpAuthor").value;
+  } else {
+    for (let i = 0; i < authors.length; i++) {
+      bookAuthor += getCurrentBibliographyAuthor(i);
+    }
+  }
+
+  // console.log(bookAuthor);
   let bookTitle = document.querySelector("#title").value;
   let bookCity = document.querySelector("#city").value;
   let bookPublisher = document.querySelector("#publisher").value;
-  let bookEdition = document.querySelector("#edition");
+  let bookEdition = document.querySelector("#edition").value;
+
+  let bookBibliography = `${bookAuthor}${year}. <em>${bookTitle}</em>. ${bookEdition}. ${bookCity}: ${bookPublisher}`;
+
+  console.log(bookBibliography);
+  document.querySelector("#bib").innerHTML = bookBibliography;
+}
+
+function getCurrentBibliographyAuthor(index) {
+  let author = authors[index];
+  let fName = author['firstName'];
+  let mName = author['middleName'];
+  let lName = author['lastName'];
+
+  let currAuthor = "";
+
+  if (index != (authors.length - 1)) {
+    if (mName == "" || mName == null) {
+      currAuthor = `${lName}, ${fName[0]}., `;
+    } else {
+      currAuthor = `${lName}, ${fName[0]}.${mName[0]}, `;
+    }
+  } else {
+    if (mName == "" || mName == null) {
+      currAuthor = `and ${lName}, ${fName[0]}., `;
+    } else {
+      currAuthor = `and ${lName}, ${fName[0]}.${mName[0]}, `;
+    }
+  }
+
+  return currAuthor;
 }
 
 // function to reset the form
