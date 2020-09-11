@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const url = require('url');
 const path = require('path');
+
 function createWindows() {
   let splashScreen = new BrowserWindow(
     {
@@ -19,6 +20,7 @@ function createWindows() {
   }));
 
   let mainWindow = new BrowserWindow({
+    title: "Biblio",
     width: 800,
     height: 750,
     resizable: false,
@@ -56,7 +58,41 @@ function createWindows() {
 
   ipcMain.on('reset_form', () => {
     mainWindow.reload();
+  });
+
+  ipcMain.on('save_result', (e, args) => {
+
+
+
+    let toWrite = `
+    Saved on: ${Date()}
+    --------------------
+    Reference Style: ${args['rStyle']}
+    Reference Source: ${args['rMaterial']}
+    In Text Citetation: ${args['inCite']}
+    Bibliography Entry: ${args['bib']}
+    `
+
+    saveFile(toWrite);
+
   })
+}
+
+const saveFile = async (toWrite) => {
+  const { dialog } = require('electron');
+  const fs = require('fs');
+
+  const savePath = await dialog.showSaveDialog(null);
+  let filePath = await savePath['filePath'];
+  await console.log(savePath);
+
+  await console.log(toWrite);
+  await fs.writeFile(filePath, toWrite, (err) => {
+    if (err) {
+      console.log(err)
+    }
+  })
+
 }
 
 function quitApp() {
