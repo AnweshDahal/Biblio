@@ -154,9 +154,7 @@ function generate() {
     generateBookBibliography(year)
   } else if (refMaterial == "journal") {
     // if the source is a journal
-    var journalTitle = document.querySelector('#title').value;
-    var journalName = document.querySelector('#journalName');
-    var pages = document.querySelector("#pages");
+    generateJournalBibliography(year);
   }
 }
 
@@ -192,8 +190,26 @@ function generateCitetation(year, refMaterial) {
 
   var cite = `(${citeAuthor}, ${year})`; // formatted string for citetation
   document.querySelector("#inCite").innerHTML = cite; // displaying the citetation
+}
 
-  generateBookBibliography(year);
+// function to generate journal bibliography
+function generateJournalBibliography(year) {
+  let journalAuthor = "";
+  if (hasCorporateAuthor) {
+    journalAuthor = document.querySelector("#corpAuthor").value;
+  } else {
+    for (let i = 0; i < authors.length; i++) {
+      journalAuthor += getCurrentBibliographyAuthor(i);
+    }
+  }
+
+  let journalTitle = document.querySelector('#title').value;
+  let journalName = document.querySelector('#journalName').value;
+  let pages = document.querySelector("#pages").value;
+  let volume = document.querySelector("#volume").value;
+  let issue = document.querySelector("#issue").value;
+
+
 }
 
 // function to generate book bibliography

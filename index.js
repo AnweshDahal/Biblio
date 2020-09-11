@@ -36,7 +36,7 @@ function createWindows() {
   })
 
   mainWindow.on('closed', () => {
-    app.quit();
+    quitApp();
   })
 
 
@@ -47,6 +47,10 @@ function createWindows() {
   ipcMain.on('reset_form', () => {
     mainWindow.reload();
   })
+}
+
+function quitApp() {
+  app.quit();
 }
 
 app.on('ready', () => {
