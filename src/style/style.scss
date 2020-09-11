@@ -1,0 +1,10 @@
+@import './fonts';
+@import './variables';
+@import './gradients';
+@import './containers';
+@import './button';
+@import './scrollbar';
+
+body{
+  background-color: $lightgrey-0;
+}

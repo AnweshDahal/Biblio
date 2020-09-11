@@ -7,30 +7,19 @@
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
   <style>
     body {
-      background-image: linear-gradient(to bottom, #2c75ff, #3c7fff, #4b88ff, #5992ff, #679bff);
-      background-attachment: fixed;
-      /* background-color: #2c75ff; */
-      height: 100vh;
-    }
-
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background-image: linear-gradient(to bottom, #2c75ff, #3c7fff, #4b88ff, #5992ff, #679bff);
-    }
-
-    ::-webkit-scrollbar-thumb {
-      border-radius: 5px;
-      background-color: #0059ff6c;
+      /* background-image: linear-gradient(to bottom, #2c75ff, #3c7fff, #4b88ff, #5992ff, #679bff); */
+      /* background-attachment: fixed; */
+      height: 98vh;
     }
   </style>
+  <link rel="stylesheet" href="./style/style.css">
 </head>
 
 <body>
-  <h1 class="text-light font-weight-light ml-2">Biblio v.1.0.0</h1>
-  <div class="container bg-light p-3 mt-3 mb-4 rounded">
+  <div class="container mt-2 rounded gr-blue-2 text-center">
+    <h1 class="text-light">Biblio v.1.0.0</h1>
+  </div>
+  <div class="container bg-light p-3 mt-2 rounded">
     <div class="form-group">
       <div class="form">
         <select name="refStyle" id="refStyle" class="form-control col-5 mb-2">
@@ -57,7 +46,6 @@
             <button class="btn btn-primary" id="addAuthor" onclick="addNewAuthor()">Add</button>
           </div>
         </div>
-
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -143,21 +131,23 @@
           <input type="text" name="url" id="url" class="form-control" placeholder="Enter URL">
           <small class="form-text text-muted">Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ</small>
         </div>
-        <div class="btn-group" role="group">
-          <button class="btn btn-primary" onclick="save()">Save</button>
-          <button class="btn btn-success" onclick="generate()">Generate</button>
-          <button class="btn btn-danger" onclick="reset()">Reset</button>
-        </div>
+
       </div>
     </div>
-    <div>
-      <h4 class="font-weight-normal">In Text Citation</h4>
-      <p id="inCite" class="font-italic">Example Citetation</p>
-    </div>
-    <div>
-      <h4 class="font-weight-normal">Bibliography Entry</h4>
-      <p id="bib">Example Bibliography</p>
-    </div>
+
+  </div>
+  <div class="container bg-light rounded mt-2 p-3">
+    <button class="btn btn-primary col-3" onclick="save()">Save</button>
+    <button class="btn btn-success col-3" onclick="generate()">Generate</button>
+    <button class="btn btn-danger col-3" onclick="reset()">Reset</button>
+  </div>
+  <div class="container bg-light p-3 mt-2">
+    <h4 class="font-weight-normal">In Text Citation</h4>
+    <p id="inCite" class="font-italic">Example Citetation</p>
+  </div>
+  <div class="container bg-light rounded p-3 mt-2 mb-4">
+    <h4 class="font-weight-normal">Bibliography Entry</h4>
+    <p id="bib">Example Bibliography</p>
   </div>
   <script src="./scripts/main.js"></script>
   <script>

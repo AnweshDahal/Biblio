@@ -1,0 +1,16 @@
+@import './variables';
+
+::-webkit-scrollbar {
+  width: 5px;
+
+}
+
+::-webkit-scrollbar-track {
+  background-color: $lightgrey-0;
+  /* background-image: linear-gradient(to bottom, #2c75ff, #3c7fff, #4b88ff, #5992ff, #679bff); */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: $darkgrey-1;
+}
