@@ -260,6 +260,23 @@ function getCurrentBibliographyAuthor(index) {
   return currAuthor;
 }
 
+function save() {
+  let refStyle = document.querySelector("#refStyle");
+  let refStyleText = refStyle.options[refStyle.selectedIndex].text;
+
+  let refSource = document.querySelector("#refMaterial");
+  let refMaterialText = refMaterial.options[refMaterial.selectedIndex].text;
+
+  let citetation = document.querySelector('#inCite').innerHTML;
+  let bibliography = document.querySelector("#bib").innerHTML;
+  ipcRenderer.sendSync('save_result', {
+    rStyle: refStyleText,
+    rMaterial: refMaterialText,
+    inCite: citetation,
+    bib: bibliography,
+  });
+}
+
 // function to reset the form
 function reset() {
   ipcRenderer.send('reset_form');
