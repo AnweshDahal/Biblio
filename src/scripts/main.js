@@ -220,8 +220,20 @@ function generateBookBibliography(year) {
   if (hasCorporateAuthor) {
     bookAuthor = document.querySelector("#corpAuthor").value;
   } else {
-    for (let i = 0; i < authors.length; i++) {
-      bookAuthor += getCurrentBibliographyAuthor(i);
+    if (authors.length == 1) {
+      let fName = authors[0]['firstName'];
+      let mName = authors[0]['middleName'];
+      let lName = authors[0]['lastName'];
+
+      if (mName == "" || mName == null) {
+        bookAuthor = `${lName}, ${fName[0]}., `;
+      } else {
+        bookAuthor = `${lName}, ${fName[0]}.${mName[0]}, `;
+      }
+    } else {
+      for (let i = 0; i < authors.length; i++) {
+        bookAuthor += getCurrentBibliographyAuthor(i);
+      }
     }
   }
 
