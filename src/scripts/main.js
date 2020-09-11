@@ -209,6 +209,8 @@ function generateJournalBibliography(year) {
   let volume = document.querySelector("#volume").value;
   let issue = document.querySelector("#issue").value;
 
+  let journalBibliography = `${journalAuthor}${year}. ${journalTitle}. <em>${journalName}</em>. ${volume}(${issue}). p.${pages}`;
+  document.querySelector("#bib").innerHTML = journalBibliography;
 
 }
 
@@ -242,8 +244,7 @@ function getCurrentBibliographyAuthor(index) {
   let lName = author['lastName'];
 
   let currAuthor = "";
-
-  if (index != (authors.length - 1)) {
+  if (index != (authors.length - 1) || authors.length == 1) {
     if (mName == "" || mName == null) {
       currAuthor = `${lName}, ${fName[0]}., `;
     } else {
