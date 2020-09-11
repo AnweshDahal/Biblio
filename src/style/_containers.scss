@@ -1,2 +1,30 @@
 @import './variables';
 @import './gradients';
+
+.dark-bg{
+  background-color: $darkgrey-0;
+}
+
+.black-bg{
+  background-color: $black;
+}
+
+.deeppurple-bg{
+  background-color: $deep-purple;
+}
+
+.opaque{
+  opacity: 1;
+}
+
+.translucent{
+  opacity: 0.7;
+}
+
+.semi-transparent{
+  opacity: 0.5;
+}
+
+.transparent{
+  opacity: 0;
+}
