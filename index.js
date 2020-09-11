@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-
+const url = require('url');
+const path = require('path');
 function createWindows() {
   let splashScreen = new BrowserWindow(
     {
@@ -11,7 +12,11 @@ function createWindows() {
     }
   );
 
-  splashScreen.loadFile("./src/splashScreen.html");
+  splashScreen.loadURL(url.format({
+    pathname: path.join(__dirname, '/src/splashScreen.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
 
   let mainWindow = new BrowserWindow({
     width: 800,
@@ -23,7 +28,12 @@ function createWindows() {
     }
   });
 
-  mainWindow.loadFile("./src/main.html");
+  // mainWindow.loadFile("./src/main.html");
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, '/src/main.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
 
   mainWindow.once('ready-to-show', () => {
 
@@ -56,4 +66,3 @@ function quitApp() {
 app.on('ready', () => {
   createWindows();
 });
-
