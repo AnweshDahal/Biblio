@@ -294,3 +294,21 @@ function save() {
 function reset() {
   ipcRenderer.send('reset_form');
 }
+
+function about() {
+  ipcRenderer.send('load_about');
+}
+
+function close_window() {
+  ipcRenderer.send('close_window');
+}
+
+function minimize_window() {
+  ipcRenderer.send('minimize_window');
+}
+
+function openDevTools() {
+  ipcRenderer.send('open_dev_tools');
+}
+
+

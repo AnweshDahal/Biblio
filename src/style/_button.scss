@@ -1,5 +1,12 @@
 @import './variables';
 
-.btn-purple{
-  
+.action-buttons{
+  width: 100%;
+  // height: 48px;
+  .btn{
+    width: 16.67%;
+    img{
+      width: 32px;
+    }
+  }
 }

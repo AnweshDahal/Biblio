@@ -25,6 +25,8 @@ function createWindows() {
     height: 750,
     resizable: false,
     show: false,
+    frame: false,
+    transparent: true,
     webPreferences: {
       nodeIntegration: true
     }
@@ -74,8 +76,22 @@ function createWindows() {
     `
 
     saveFile(toWrite);
+  });
+
+  ipcMain.on('close_window', () => {
+    mainWindow.close();
+  });
+
+  ipcMain.on("minimize_window", () => {
+    mainWindow.minimize();
 
   })
+
+  ipcMain.on('open_dev_tools', () => {
+    console.log('opeaning dev tools');
+    mainWindow.webContents.openDevTools();
+  });
+
 }
 
 const saveFile = async (toWrite) => {
