@@ -7,4 +7,16 @@
 
 body{
   background-color: $lightgrey-0;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.app-content{
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.top-bar{
+  -webkit-app-region: drag;
+  z-index: 10;
 }
