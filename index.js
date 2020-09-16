@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Tray } = require('electron');
 const url = require('url');
 const path = require('path');
 
@@ -18,9 +18,9 @@ function createWindows() {
     protocol: 'file:',
     slashes: true
   }));
-
   let mainWindow = new BrowserWindow({
     title: "Biblio",
+    icon: './src/assets.logo.svg',
     width: 800,
     height: 750,
     resizable: false,

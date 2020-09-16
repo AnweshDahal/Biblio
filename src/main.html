@@ -16,21 +16,19 @@
 </head>
 
 <body>
-  <div class="gr-blue-2 text-center text-light p-1 fixed-top top-bar font-weight-bold">Biblio</div>
+  <div class="gr-blue-2 text-light fixed-top top-bar font-weight-bold pl-1 align-items-center">
+    <img src="./assets/logo.svg" width="16px" alt="">
+    <span class="ml-1">Biblio v.1.0.0</span>
+  </div>
   <div class="app-content">
-    <div class="container mt-5 rounded gr-blue-2 text-center">
-      <h1 class="text-light">Biblio v.1.0.0</h1>
-    </div>
-    <div class="container mt-2 rounded text-center p-0">
+    <div class="container mt-5 rounded text-center p-0">
       <div class="btn-group action-buttons">
-        <button class="btn btn-light" onclick="reset()">Reset</button>
-        <button class="btn btn-light" onclick="save()">Save</button>
-        <button class="btn btn-light" onclick="generate()">Generate</button>
-        <button class="btn btn-light">About</button>
-        <button class="btn btn-warning" onclick="minimize_window()">Minimize</button>
-        <button class="btn btn-danger" onclick="close_window()">Close</button>
+        <button class="btn btn-dark" onclick="openDevTools()">Dev Tool</button>
+        <button class="btn bg-primary">About</button>
+        <button class="btn btn-sm btn-warning" onclick="minimize_window()">Minimize</button>
+        <button class="btn btn-sm btn-danger" onclick="close_window()">Close</button>
       </div>
-      <button class="btn btn-dark" onclick="openDevTools()">Dev Tool</button>
+
     </div>
     <div class="container bg-light p-3 mt-2 rounded">
       <div class="form-group">

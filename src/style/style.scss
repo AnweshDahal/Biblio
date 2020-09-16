@@ -6,17 +6,18 @@
 @import './scrollbar';
 
 body{
-  background-color: $lightgrey-0;
-  border-radius: 5px;
   overflow: hidden;
 }
 
 .app-content{
+  background-color: $lightgrey-0;
   height: 100vh;
   overflow-y: scroll;
 }
 
 .top-bar{
   -webkit-app-region: drag;
+  display: flex;
   z-index: 10;
+  height: 28px;
 }
