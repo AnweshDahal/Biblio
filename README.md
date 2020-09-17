@@ -1,15 +1,6 @@
-<style>
-  header{
-    text-align:center;
-  }
-  .app-logo{
-    width: 256px;
-  }
-</style>
-
-<header>
+<header align="center">
   <h1>Biblio</h1>
-  <img src="./src/assets/logo.svg" class="app-logo">
+  <img width="256px" src="./src/assets/logo.svg" class="app-logo">
 </header>
 
 <about>
