@@ -1,10 +1,12 @@
 {
   "name": "biblio",
+  "productName": "Biblio",
   "version": "1.0.0",
   "description": "Bibliography and Citation Generator",
   "main": "index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-win": "electron-packager . biblio --overwrite --platform=win32 --arch=ia32 --icon='./src/assets/logo.ico' --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='Biblio'"
   },
   "author": "Anwesh Dahal",
   "license": "MIT",
