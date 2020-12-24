@@ -1,19 +1,9 @@
-<header align="center">
-  <h1>Biblio</h1>
-  <img width="256px" src="./src/assets/logo.svg" class="app-logo">
-</header>
+![Biblio](https://socialify.git.ci/AnweshDahal/Biblio/image?description=1&font=Inter&language=1&logo=https%3A%2F%2Fraw.githubusercontent.com%2FAnweshDahal%2FBiblio%2Fmaster%2Fsrc%2Fassets%2Flogo.png&owner=1&theme=Light)
 
-<about>
-  <img src="https://img.shields.io/badge/latest-1.0.0-blue">
-
-  <img src="https://img.shields.io/badge/language-javascript-ffd700">
-
-  
-  <img src="https://img.shields.io/badge/devDependencies-electron-green">
-
-  <img src="https://img.shields.io/badge/license-MIT-orange">
-
-</about>
+![latest](https://img.shields.io/badge/latest-1.0.0-blue)
+![language](https://img.shields.io/badge/language-javascript-ffd700)
+![devDependencies](https://img.shields.io/badge/devDependencies-electron-green)
+![license](https://img.shields.io/badge/license-MIT-orange)
 
 ## Introduction
 Biblio allows you to generate citation and bibliography for your school reports. This program follows guidelines from Angila Ruskin University's [**Havard System of Reference**](https://library.aru.ac.uk/referencing/harvard.htm), and Purdue University's Online Writing Lab: [**Purdue OWL**](https://owl.purdue.edu/owl/purdue_owl.html) for proper referencing format.
